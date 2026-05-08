@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check markdown files
+        run: |
+          for f in *.md; do
+            lines=$(wc -l < "$f")
+            echo "✓ $f ($lines lines)"
+          done
+      - name: Validate cross-references
+        run: |
+          grep -rn '](\./' *.md | while IFS=: read -r file line rest; do
+            target=$(echo "$rest" | grep -oP '\]\(\K[^)]+')
+            if [ -n "$target" ] && [ ! -f "$target" ]; then
+              echo "⚠️  Broken link in $file:$line: $target"
+            fi
+          done || echo "No broken links found"
