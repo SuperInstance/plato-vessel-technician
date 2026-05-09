@@ -1,5 +1,15 @@
 # ⚓ PLATO Vessel Technician — Deckboss
 
+
+## Meta
+
+**Domain:** ai-agents
+**Depends on:** —
+**Depended by:** —
+**Implements:** Deckboss — marine/industrial technician agent for PLATO. Voice-first, fail-safe,...
+**Related:** —
+
+
 **Voice-first marine/industrial agent. Walk on a boat, plug in, talk, done.**
 
 Deckboss is the PLATO vessel variant for technicians who work on boats, industrial equipment, and remote installations. It turns any ESP32-equipped system into a voice-responsive, fail-safe, self-diagnosing smart component.
